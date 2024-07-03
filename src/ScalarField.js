@@ -1,5 +1,5 @@
 import Field from './Field';
-import GeoTIFF from 'geotiff';
+import { fromArrayBuffer } from 'geotiff';
 
 /**
  * Scalar Field
@@ -96,7 +96,7 @@ export default class ScalarField extends Field {
     static async multipleFromGeoTIFF(data, bandIndexes) {
     //console.time('ScalarField from GeoTIFF');
 
-        let tiff = await GeoTIFF.fromArrayBuffer(data); // geotiff.js
+        let tiff = await fromArrayBuffer(data); // geotiff.js
         let image = await tiff.getImage();
         let rasters = await image.readRasters();
         let tiepoint = image.getTiePoints()[0];
