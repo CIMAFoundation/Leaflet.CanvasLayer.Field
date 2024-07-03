@@ -25,11 +25,11 @@ export default class VectorField extends Field {
      * Creates a VectorField from the content of two different Geotiff files
      * @param   {ArrayBuffer} gtU - geotiff data with u-component (band 0)
      * @param   {ArrayBuffer} gtV - geotiff data with v-component (band 0)
-     * @returns {VectorField}
+     * @returns {Promise<VectorField>}
      */
-    static fromGeoTIFFs(gtU, gtV) {
-        let u = ScalarField.fromGeoTIFF(gtU);
-        let v = ScalarField.fromGeoTIFF(gtV);
+    static async fromGeoTIFFs(gtU, gtV) {
+        let u = await ScalarField.fromGeoTIFF(gtU);
+        let v = await ScalarField.fromGeoTIFF(gtV);
         let p = VectorField._paramsFromScalarFields(u, v);
 
         return new VectorField(p);
@@ -39,10 +39,10 @@ export default class VectorField extends Field {
      * Creates a VectorField from the content of Multiband Geotiff
      * @param   {ArrayBuffer} geotiffData - multiband
      * @param   {Array} bandIndexesForUV
-     * @returns {VectorField}
+     * @returns {Promise<VectorField>}
      */
-    static fromMultibandGeoTIFF(geotiffData, bandIndexesForUV = [0, 1]) {
-        let [u, v] = ScalarField.multipleFromGeoTIFF(
+    static async fromMultibandGeoTIFF(geotiffData, bandIndexesForUV = [0, 1]) {
+        let [u, v] = await ScalarField.multipleFromGeoTIFF(
             geotiffData,
             bandIndexesForUV
         );

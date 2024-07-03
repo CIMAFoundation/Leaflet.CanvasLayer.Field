@@ -1,4 +1,5 @@
 import Field from './Field';
+import GeoTIFF from 'geotiff';
 
 /**
  * Scalar Field
@@ -80,9 +81,9 @@ export default class ScalarField extends Field {
    * Creates a ScalarField from the content of a GeoTIFF file
    * @param   {ArrayBuffer}   data
    * @param   {Number}   bandIndex
-   * @returns {ScalarField}
+   * @returns {Promise<ScalarField>}
    */
-    static fromGeoTIFF(data, bandIndex = 0) {
+    static async fromGeoTIFF(data, bandIndex = 0) {
         return ScalarField.multipleFromGeoTIFF(data, [bandIndex])[0];
     }
 
@@ -90,14 +91,14 @@ export default class ScalarField extends Field {
    * Creates a ScalarField array (one per band) from the content of a GeoTIFF file
    * @param   {ArrayBuffer}   data
    * @param   {Array}   bandIndexes - if not provided all bands are returned
-   * @returns {Array.<ScalarField>}
+   * @returns {Promise<Array.<ScalarField>>}
    */
-    static multipleFromGeoTIFF(data, bandIndexes) {
+    static async multipleFromGeoTIFF(data, bandIndexes) {
     //console.time('ScalarField from GeoTIFF');
 
-        let tiff = GeoTIFF.parse(data); // geotiff.js
-        let image = tiff.getImage();
-        let rasters = image.readRasters();
+        let tiff = await GeoTIFF.fromArrayBuffer(data); // geotiff.js
+        let image = await tiff.getImage();
+        let rasters = await image.readRasters();
         let tiepoint = image.getTiePoints()[0];
         let fileDirectory = image.getFileDirectory();
         let [xScale, yScale] = fileDirectory.ModelPixelScale;
