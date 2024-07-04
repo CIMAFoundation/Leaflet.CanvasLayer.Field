@@ -143,3 +143,5 @@ export default function canvasLayer() {
 }
 
 L.canvasLayer = canvasLayer;
+
+export { canvasLayer };
