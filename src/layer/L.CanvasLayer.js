@@ -137,9 +137,9 @@ L.CanvasLayer = L.Layer.extend({
     }
 });
 
-L.canvasLayer = function () {
+
+export default function canvasLayer() {
     return new L.CanvasLayer();
-};
+}
 
-
-export const canvasLayer = L.canvasLayer;
+L.canvasLayer = canvasLayer;
