@@ -9,8 +9,12 @@ const config = {
     entry: './_main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'leaflet.canvaslayer.field.js'
+        filename: 'leaflet.canvaslayer.field.js',
+        library: 'LeafletCanvasLayerField', // The global variable name used if script is included directly in HTML
+        libraryTarget: 'umd', // Universal Module Definition
+        umdNamedDefine: true // Helps with named AMD modules
     },
+    
     devtool: 'source-map',
     module: {
         rules: [

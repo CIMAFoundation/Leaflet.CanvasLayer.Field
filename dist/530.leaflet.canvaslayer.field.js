@@ -1,2 +1,2 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[530],{530:(e,r,s)=>{s.r(r),s.d(r,{default:()=>c});var u=s(917),a=s(254);class c extends a.A{decodeBlock(e){return(0,u.UD)(new Uint8Array(e)).buffer}}}}]);
+"use strict";(self.webpackChunkLeafletCanvasLayerField=self.webpackChunkLeafletCanvasLayerField||[]).push([[530],{530:(e,a,r)=>{r.r(a),r.d(a,{default:()=>n});var s=r(917),l=r(254);class n extends l.A{decodeBlock(e){return(0,s.UD)(new Uint8Array(e)).buffer}}}}]);
 //# sourceMappingURL=530.leaflet.canvaslayer.field.js.map

@@ -3,6 +3,9 @@
     "version": "1.5.6",
     "description": "A set of layers using canvas to draw ASCIIGrid or GeoTIFF files. This includes a basic raster layer (*ScalaField*) and an animated layer for vector fields, such as wind or currents (*VectorFieldAnim*)",
     "main": "index.js",
+    "peerDependencies": {
+        "leaflet": ">=1.0.3"
+    },
     "dependencies": {
         "@turf/boolean-point-in-polygon": "^6.5.0",
         "chroma-js": "^2.4.2",
