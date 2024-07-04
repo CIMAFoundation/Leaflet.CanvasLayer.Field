@@ -1,5 +1,3 @@
-import { Canvas } from 'leaflet';
-
 /*
   1.0.1 (downloaded from https://github.com/Sumbera/gLayers.Leaflet/releases/tag/v1.0.1)
 
@@ -7,7 +5,9 @@ import { Canvas } from 'leaflet';
   copyright Stanislav Sumbera,  2016 , sumbera.com , license MIT
   originally created and motivated by L.CanvasOverlay  available here: https://gist.github.com/Sumbera/11114288
 */
-export const CanvasLayer = L.Layer.extend({	
+
+L.CanvasLayer = L.Layer.extend({
+	
     // -- initialized is called on prototype
     initialize: function (options) {
         this._map = null;
@@ -137,9 +137,9 @@ export const CanvasLayer = L.Layer.extend({
     }
 });
 
-L.CanvasLayer = CanvasLayer;
-
 L.canvasLayer = function () {
     return new L.CanvasLayer();
 };
 
+
+export const canvasLayer = L.canvasLayer;
